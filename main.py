@@ -20,7 +20,7 @@ if __name__ == '__main__':
         test_cases_raw.add(file_name(i))
     test_cases = {}
     index = 1
-    for t in test_cases_raw:
+    for t in sorted(map(int, test_cases_raw) if __import__('functools').reduce(lambda last, val: last and val.isdecimal(), test_cases_raw, True) else test_cases_raw):
         # print(t)
         with open(os.path.join(file_dir, f"{t}.in"), "r") as f:
             input_content=f.read()
